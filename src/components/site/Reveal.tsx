@@ -75,7 +75,7 @@ export function StaggerGroup({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount }}
+      viewport={{ once: true, amount, margin: "0px 0px -10% 0px" }}
       variants={{
         hidden: {},
         show: { transition: { staggerChildren: stagger, delayChildren: delay } },
@@ -109,6 +109,9 @@ export function StaggerItem({
           transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
         },
       }}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
     >
       {children}
     </motion.div>
