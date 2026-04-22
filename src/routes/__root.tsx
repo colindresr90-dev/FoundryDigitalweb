@@ -33,6 +33,12 @@ export const Route = createRootRoute({
       { name: "description", content: "Bufete de abogados con más de 20 años de experiencia. Asesoría legal profesional para personas y empresas." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Vargas & Asociados — Bufete Jurídico" },
+      { name: "twitter:title", content: "Vargas & Asociados — Bufete Jurídico" },
+      { property: "og:description", content: "Bufete de abogados con más de 20 años de experiencia. Asesoría legal profesional para personas y empresas." },
+      { name: "twitter:description", content: "Bufete de abogados con más de 20 años de experiencia. Asesoría legal profesional para personas y empresas." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/25bc305d-fad6-448f-9058-2119bfbfe6c7/id-preview-b429bc6d--acea1dca-ee54-4181-8c15-deeb70c6d24c.lovable.app-1776901886381.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/25bc305d-fad6-448f-9058-2119bfbfe6c7/id-preview-b429bc6d--acea1dca-ee54-4181-8c15-deeb70c6d24c.lovable.app-1776901886381.png" },
     ],
     links: [
       {
