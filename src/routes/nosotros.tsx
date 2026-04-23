@@ -12,48 +12,6 @@ import teamImg from "@/assets/team.jpg";
 import aboutImg from "@/assets/about-justice.jpg";
 import portraitImg from "@/assets/lawyer-portrait.jpg";
 
-export const Route = createFileRoute("/nosotros")({
-  head: () => ({
-    meta: [
-      { title: "Nosotros — Vargas & Asociados | Bufete en El Salvador" },
-      { name: "description", content: "Más de 22 años defendiendo a personas y empresas en El Salvador. Conoce nuestra historia, valores y al equipo de abogados de Vargas & Asociados." },
-      { property: "og:title", content: "Nosotros — Vargas & Asociados" },
-      { property: "og:description", content: "Historia, valores y equipo de un bufete salvadoreño construido sobre confianza y resultados." },
-    ],
-  }),
-  component: NosotrosPage,
-});
-
-const values = [
-  { icon: Handshake, title: "Confianza", desc: "Construimos relaciones de largo plazo basadas en la transparencia y el cumplimiento." },
-  { icon: ScrollText, title: "Ética", desc: "Cada decisión se rige por principios deontológicos rigurosos e inquebrantables." },
-  { icon: Award, title: "Profesionalismo", desc: "Excelencia técnica respaldada por más de dos décadas de experiencia continua." },
-  { icon: Heart, title: "Compromiso", desc: "Defendemos tus intereses como si fueran propios, sin atajos ni concesiones." },
-  { icon: Eye, title: "Discreción", desc: "Tratamos cada asunto con la confidencialidad que merece tu vida y tu negocio." },
-  { icon: Sparkles, title: "Innovación", desc: "Usamos tecnología y procesos modernos para entregar resultados más rápidos." },
-];
-
-const stats = [
-  { v: 22, s: "+", l: "Años de trayectoria" },
-  { v: 1800, s: "+", l: "Casos resueltos" },
-  { v: 12, s: "", l: "Abogados especializados" },
-  { v: 98, s: "%", l: "Clientes satisfechos" },
-];
-
-const milestones = [
-  { year: "2002", title: "Fundación", desc: "El Lic. Roberto Vargas funda el despacho en San Salvador con tres abogados." },
-  { year: "2008", title: "Expansión corporativa", desc: "Apertura del área mercantil y asesoría a primeras corporaciones del país." },
-  { year: "2014", title: "Reconocimiento gremial", desc: "Distinción otorgada por la Cámara de Comercio de El Salvador." },
-  { year: "2019", title: "Equipo multidisciplinario", desc: "Llegamos a 12 abogados con especializaciones en 9 áreas del derecho." },
-  { year: "2024", title: "Liderazgo regional", desc: "Posicionamiento como referencia jurídica en Centroamérica." },
-];
-
-const team = [
-  { name: "Roberto Vargas", role: "Socio fundador · Civil & Mercantil", img: portraitImg, edu: "Universidad de El Salvador · LL.M. Harvard" },
-  { name: "Andrea Menéndez", role: "Socia · Penal & Familia", img: teamImg, edu: "UCA · Especialización Madrid" },
-  { name: "Carlos Hernández", role: "Asociado senior · Laboral", img: portraitImg, edu: "Universidad Dr. José Matías Delgado" },
-];
-
 function NosotrosPage() {
   return (
     <Layout>
