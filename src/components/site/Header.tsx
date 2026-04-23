@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Menu, X, Scale, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,11 +7,12 @@ const nav = [
   { to: "/", label: "Inicio" },
   { to: "/servicios", label: "Servicios" },
   { to: "/nosotros", label: "Nosotros" },
-] as const;
+];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -22,7 +23,6 @@ export function Header() {
 
   return (
     <>
-      {/* Top utility bar */}
       <div className={`fixed inset-x-0 top-0 z-50 bg-navy-deep text-white/80 text-xs transition-all duration-500 ${scrolled ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}>
         <div className="mx-auto max-w-7xl px-6 py-2.5 flex items-center justify-between">
           <p className="hidden sm:block tracking-[0.2em] uppercase text-[10px] text-gold/80">Bufete jurídico · El Salvador</p>
@@ -65,14 +65,12 @@ export function Header() {
               <Link
                 key={item.to}
                 to={item.to}
-                className="text-xs uppercase tracking-[0.22em] text-white/80 hover:text-gold transition-colors link-underline"
-                activeProps={{ className: "text-gold" }}
-                activeOptions={{ exact: true }}
+                className={`text-xs uppercase tracking-[0.22em] transition-colors link-underline ${location.pathname === item.to ? "text-gold" : "text-white/80 hover:text-gold"}`}
               >
                 {item.label}
               </Link>
             ))}
-            <a
+            
               href="https://wa.me/50378900000?text=Hola%2C%20quisiera%20agendar%20una%20consulta"
               target="_blank"
               rel="noopener"
@@ -106,13 +104,12 @@ export function Header() {
                     key={item.to}
                     to={item.to}
                     onClick={() => setOpen(false)}
-                    className="text-sm uppercase tracking-[0.22em] text-white/80"
-                    activeProps={{ className: "text-gold" }}
+                    className={`text-sm uppercase tracking-[0.22em] ${location.pathname === item.to ? "text-gold" : "text-white/80"}`}
                   >
                     {item.label}
                   </Link>
                 ))}
-                <a
+                
                   href="https://wa.me/50378900000"
                   className="inline-flex items-center justify-center btn-gold px-5 py-3 text-xs font-semibold uppercase tracking-[0.22em]"
                 >
