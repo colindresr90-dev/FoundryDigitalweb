@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import {
@@ -13,6 +13,19 @@ import aboutImg from "@/assets/about-justice.jpg";
 import portraitImg from "@/assets/lawyer-portrait.jpg";
 import sansalvadorImg from "@/assets/sansalvador.jpg";
 
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Vargas & Asociados — Bufete de abogados en San Salvador, El Salvador" },
+      { name: "description", content: "Bufete de abogados en San Salvador con más de 22 años de experiencia. Asesoría legal en derecho civil, penal, mercantil, laboral y corporativo en El Salvador." },
+      { name: "keywords", content: "bufete de abogados El Salvador, abogados San Salvador, asesoría legal El Salvador, derecho civil, derecho penal, derecho mercantil" },
+      { property: "og:title", content: "Vargas & Asociados — Bufete Jurídico en El Salvador" },
+      { property: "og:description", content: "Defendiendo tus derechos con experiencia y compromiso. Asesoría legal profesional para personas y empresas en El Salvador." },
+      { property: "og:type", content: "website" },
+    ],
+  }),
+  component: HomePage,
+});
 
 const services = [
   { icon: Scale, title: "Derecho Civil", desc: "Contratos, sucesiones, propiedad y responsabilidad civil con respaldo experto.", tone: "navy" },
@@ -45,7 +58,7 @@ const testimonials = [
 
 const partners = ["Cámara de Comercio", "ANEP", "Corte Suprema", "ASI", "Fedecámaras", "Cámara de Comercio"];
 
-export default function HomePage() {
+function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);

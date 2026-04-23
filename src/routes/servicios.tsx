@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   Scale, Gavel, Briefcase, Building2, ShieldCheck, FileText, ArrowRight,
@@ -8,6 +8,19 @@ import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/site/Reveal";
 import servicesBg from "@/assets/services-bg.jpg";
+
+export const Route = createFileRoute("/servicios")({
+  head: () => ({
+    meta: [
+      { title: "Servicios Legales — Vargas & Asociados | Abogados en El Salvador" },
+      { name: "description", content: "Servicios legales en derecho civil, penal, laboral, mercantil, familiar y migratorio en El Salvador. Asesoría jurídica profesional para personas y empresas." },
+      { name: "keywords", content: "servicios legales El Salvador, abogados San Salvador, derecho civil, derecho mercantil, derecho laboral, derecho penal" },
+      { property: "og:title", content: "Servicios Legales — Vargas & Asociados" },
+      { property: "og:description", content: "Asesoría jurídica integral en las principales áreas del derecho salvadoreño." },
+    ],
+  }),
+  component: ServiciosPage,
+});
 
 const services = [
   {
@@ -134,7 +147,8 @@ const sectors = [
   "Comercio y retail", "Telecomunicaciones", "Salud y farmacéutica",
   "Energía y recursos", "Tecnología y startups",
 ];
-export default function ServiciosPage() {
+
+function ServiciosPage() {
   return (
     <Layout>
       <PageHero
@@ -142,7 +156,12 @@ export default function ServiciosPage() {
         title="Servicios jurídicos integrales"
         subtitle="Soluciones legales especializadas para personas, familias y empresas en cada etapa de su vida o negocio en El Salvador."
       />
+
+      {/* SERVICES GRID */}
       <section className="py-24 md:py-32 bg-gradient-cream relative overflow-hidden">
+        <div className="absolute -top-32 -right-32 h-[500px] w-[500px] rounded-full bg-gold/10 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -left-32 h-[500px] w-[500px] rounded-full bg-burgundy/8 blur-3xl pointer-events-none" />
+
         <div className="mx-auto max-w-7xl px-6 relative">
           <StaggerGroup className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
@@ -153,6 +172,8 @@ export default function ServiciosPage() {
                   className="group relative bg-white p-10 hover:shadow-elegant transition-all duration-500 h-full overflow-hidden border border-border hover:border-gold/40"
                 >
                   <div className={`absolute inset-x-0 top-0 h-1 ${s.tone === "burgundy" ? "bg-burgundy" : "bg-gradient-gold"}`} />
+                  <div className={`absolute inset-x-0 bottom-0 h-0 ${s.tone === "burgundy" ? "bg-burgundy/5" : "bg-gold/5"} group-hover:h-full transition-all duration-500 -z-0`} />
+
                   <div className="relative">
                     <motion.div
                       whileHover={{ rotate: -8, scale: 1.1 }}
@@ -177,6 +198,8 @@ export default function ServiciosPage() {
           </StaggerGroup>
         </div>
       </section>
+
+      {/* SECTORS */}
       <section className="py-24 bg-background">
         <div className="mx-auto max-w-6xl px-6">
           <Reveal className="text-center max-w-2xl mx-auto mb-14">
@@ -184,6 +207,7 @@ export default function ServiciosPage() {
             <h2 className="font-display text-4xl md:text-5xl text-navy">Industrias con las que <em className="text-gold-deep">trabajamos</em></h2>
             <span className="gold-divider mt-6" />
           </Reveal>
+
           <StaggerGroup stagger={0.06} className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {sectors.map((s) => (
               <StaggerItem key={s}>
@@ -199,6 +223,8 @@ export default function ServiciosPage() {
           </StaggerGroup>
         </div>
       </section>
+
+      {/* CTA */}
       <section className="relative py-28 text-white overflow-hidden grain">
         <motion.img
           initial={{ scale: 1.15 }} whileInView={{ scale: 1 }}
@@ -207,10 +233,16 @@ export default function ServiciosPage() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-navy-deep/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-deep/95 via-navy-deep/70 to-navy-deep/95" />
+
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <Reveal>
             <p className="ornament mb-6">¿No encuentras lo que buscas?</p>
             <h2 className="font-display text-4xl md:text-6xl">Cada caso es único. <em className="text-gradient-gold">Hablemos del tuyo.</em></h2>
+            <span className="gold-divider mt-8 block mx-auto" />
+            <p className="mt-7 text-white/75 max-w-2xl mx-auto text-lg">
+              Nuestro equipo evalúa tu situación sin compromiso y te orientamos hacia la mejor estrategia posible.
+            </p>
             <div className="mt-12 flex flex-wrap justify-center gap-4">
               <a
                 href="https://wa.me/50378900000" target="_blank" rel="noopener"
@@ -218,7 +250,10 @@ export default function ServiciosPage() {
               >
                 Solicitar consulta <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
-              <Link to="/nosotros" className="inline-flex items-center gap-3 border border-white/30 backdrop-blur bg-white/5 text-white px-9 py-5 text-xs font-semibold uppercase tracking-[0.22em] hover:bg-white/10 hover:border-gold transition-all">
+              <Link
+                to="/nosotros"
+                className="inline-flex items-center gap-3 border border-white/30 backdrop-blur bg-white/5 text-white px-9 py-5 text-xs font-semibold uppercase tracking-[0.22em] hover:bg-white/10 hover:border-gold transition-all"
+              >
                 Conocer al equipo
               </Link>
             </div>
